@@ -6,17 +6,17 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import main.Settings;
-import model.Univers;
+import model.Universe;
 
 public class MainPanel extends JPanel{
-	private Univers univers;
+	private Universe universe;
 	private int nbCellHeigh;
 	private int nbCellWidth;
 	private int pixelWidthOfCell;
 	private int pixelHeighOfCell;
 	
-	public MainPanel(Univers univers){
-		this.univers = univers;
+	public MainPanel(Universe univers){
+		this.universe = univers;
 		this.nbCellWidth = univers.getWidth();
 		this.nbCellHeigh = univers.getHeigh();
 		
@@ -40,7 +40,7 @@ public class MainPanel extends JPanel{
 		g.setColor(Settings.CELL_COLOR);
 		for (int i = 0; i < nbCellWidth; i++) {
 			for (int j = 0; j < nbCellHeigh; j++) {
-				if(univers.isCell(i, j))
+				if(universe.isCell(i, j))
 					g.fillRect(i*pixelWidthOfCell, j*pixelHeighOfCell, pixelWidthOfCell, pixelHeighOfCell);
 			}
 		}

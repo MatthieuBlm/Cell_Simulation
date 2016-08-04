@@ -3,18 +3,18 @@ package view;
 import javax.swing.JFrame;
 
 import main.Settings;
-import model.Univers;
+import model.Universe;
 
 public class Window extends JFrame{
-	private Univers univers;
+	private Universe universe;
 	private MainPanel mainPanel;
 	
-	public Window(Univers univers, MainPanel mainPanel){
+	public Window(Universe universe, MainPanel mainPanel){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle(Settings.APPLICATION_TITLE);
 		this.setResizable(false);
-		this.univers = univers;
-		univers.randomlyBuildUnivers();
+		this.universe = universe;
+		universe.randomlyBuildUnivers();
 		
 		this.mainPanel = mainPanel;
 		

@@ -5,10 +5,10 @@ import javax.swing.JPanel;
 import main.Settings;
 
 public class Engine {
-	private Univers univers;
+	private Universe univers;
 	private JPanel mainPanel;
 	
-	public Engine(Univers univers, JPanel mainPanel){
+	public Engine(Universe univers, JPanel mainPanel){
 		this.univers = univers;
 		this.mainPanel = mainPanel;
 	}

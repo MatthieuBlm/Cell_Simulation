@@ -4,10 +4,10 @@ import java.util.Random;
 
 import main.Settings;
 
-public class Univers {
+public class Universe {
 	private Object [][] map;
 	
-	public Univers(int width, int heigh){
+	public Universe(int width, int heigh){
 		map = new Object[width][heigh];
 	}
 	
