@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cell-behavior id="life_game">
+	<reproduction>
+		<to-born>
+			
+		</to-born>
+		<to-die>
+			
+		</to-die>
+	</reproduction>
+	<comportment>
+		
+	</comportment>
+</cell-behavior>

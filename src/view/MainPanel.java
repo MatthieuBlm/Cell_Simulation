@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import main.Ressources;
+import main.Settings;
 import model.Univers;
 
 public class MainPanel extends JPanel{
@@ -20,20 +20,24 @@ public class MainPanel extends JPanel{
 		this.nbCellWidth = univers.getWidth();
 		this.nbCellHeigh = univers.getHeigh();
 		
-		this.setPreferredSize(new Dimension(Ressources.WINDOW_SIZE_X, Ressources.WINDOW_SIZE_Y));
+		this.setPreferredSize(new Dimension(Settings.WINDOW_SIZE_X, Settings.WINDOW_SIZE_Y));
 		
-		pixelWidthOfCell = Ressources.WINDOW_SIZE_X / nbCellWidth;
-		pixelHeighOfCell = Ressources.WINDOW_SIZE_Y / nbCellHeigh;
+		pixelWidthOfCell = Settings.WINDOW_SIZE_X / nbCellWidth;
+		pixelHeighOfCell = Settings.WINDOW_SIZE_Y / nbCellHeigh;
 	}
 	
 	public void paintComponent(Graphics g){
-		for (int i = 1; i < nbCellWidth; i++ ) {
-			g.drawRect(0, i*pixelWidthOfCell, Ressources.WINDOW_SIZE_X, 0);
-		}
-		for (int i = 1; i < nbCellHeigh; i++ ) {
-			g.drawRect(i*pixelHeighOfCell, 0, 1, Ressources.WINDOW_SIZE_Y);
+		if(Settings.DISPLAY_GRID){
+			g.setColor(Settings.GRID_COLOR);
+			for (int i = 1; i < nbCellWidth; i++ ) {
+				g.drawRect(0, i*pixelWidthOfCell, Settings.WINDOW_SIZE_X, 0);
+			}
+			for (int i = 1; i < nbCellHeigh; i++ ) {
+				g.drawRect(i*pixelHeighOfCell, 0, 1, Settings.WINDOW_SIZE_Y);
+			}
 		}
 		
+		g.setColor(Settings.CELL_COLOR);
 		for (int i = 0; i < nbCellWidth; i++) {
 			for (int j = 0; j < nbCellHeigh; j++) {
 				if(univers.isCell(i, j))

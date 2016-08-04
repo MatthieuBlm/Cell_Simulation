@@ -2,7 +2,7 @@ package model;
 
 import java.util.Random;
 
-import main.Ressources;
+import main.Settings;
 
 public class Univers {
 	private Object [][] map;
@@ -16,7 +16,7 @@ public class Univers {
 		
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[0].length; j++) {
-				map[i][j] = (rand.nextDouble() <= Ressources.CELL_RATE ? new Cell(i, j) : null);
+				map[i][j] = (rand.nextDouble() <= Settings.CELL_RATE ? new Cell(i, j) : null);
 			}
 		}
 	}
