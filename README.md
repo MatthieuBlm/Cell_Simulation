@@ -1,5 +1,5 @@
 # Cell_Simulation
-Cell_Simulation is a small software aime to simulate different type of cell population (biological cell, ants...).
+Cell_Simulation is a small software aimed to simulate different type of cell population (biological cell, ants...).
 
 I would like to implements a lot of different behaviors and maybe one day simulate natural selectivity.
 
