@@ -3,20 +3,14 @@ package view;
 import javax.swing.JFrame;
 
 import main.Settings;
-import model.Universe;
 
 public class Window extends JFrame{
-	private Universe universe;
-	private MainPanel mainPanel;
+	private static final long serialVersionUID = -3972758798101675963L;
 	
-	public Window(Universe universe, MainPanel mainPanel){
+	public Window(MainPanel mainPanel){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle(Settings.APPLICATION_TITLE);
 		this.setResizable(false);
-		this.universe = universe;
-		universe.randomlyBuildUnivers();
-		
-		this.mainPanel = mainPanel;
 		
 		this.add(mainPanel);
 		this.pack();

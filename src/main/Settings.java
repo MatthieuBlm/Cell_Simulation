@@ -15,7 +15,7 @@ public abstract class Settings {
 			
 	// Simulation
 	public static final double CELL_RATE 			= 0.5;									// Between 0 and 1
-	public static final int NB_CELL_WIDTH 			= 250;
-	public static final int NB_CELL_HEIGH 			= 250;
-	public static final long PARIOD_DURATION 		= 1000;									// In milliseconds
+	public static final int NB_CELL_WIDTH 			= 50;
+	public static final int NB_CELL_HEIGH 			= 50;
+	public static final long PARIOD_DURATION 		= 50;									// In milliseconds
 }

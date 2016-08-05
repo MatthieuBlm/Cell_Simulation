@@ -9,37 +9,36 @@ import main.Settings;
 import model.Universe;
 
 public class MainPanel extends JPanel{
+	private static final long serialVersionUID = -3590785491709470949L;
 	private Universe universe;
-	private int nbCellHeigh;
-	private int nbCellWidth;
 	private int pixelWidthOfCell;
 	private int pixelHeighOfCell;
 	
-	public MainPanel(Universe univers){
-		this.universe = univers;
-		this.nbCellWidth = univers.getWidth();
-		this.nbCellHeigh = univers.getHeigh();
+	public MainPanel(Universe universe){
+		this.universe = universe;
 		
 		this.setPreferredSize(new Dimension(Settings.WINDOW_SIZE_X, Settings.WINDOW_SIZE_Y));
 		
-		pixelWidthOfCell = Settings.WINDOW_SIZE_X / nbCellWidth;
-		pixelHeighOfCell = Settings.WINDOW_SIZE_Y / nbCellHeigh;
+		pixelWidthOfCell = Settings.WINDOW_SIZE_X / Settings.NB_CELL_WIDTH;
+		pixelHeighOfCell = Settings.WINDOW_SIZE_Y / Settings.NB_CELL_HEIGH;
 	}
 	
 	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		
 		if(Settings.DISPLAY_GRID){
 			g.setColor(Settings.GRID_COLOR);
-			for (int i = 1; i < nbCellWidth; i++ ) {
+			for (int i = 1; i < Settings.NB_CELL_WIDTH; i++ ) {
 				g.drawRect(0, i*pixelWidthOfCell, Settings.WINDOW_SIZE_X, 0);
 			}
-			for (int i = 1; i < nbCellHeigh; i++ ) {
+			for (int i = 1; i < Settings.NB_CELL_HEIGH; i++ ) {
 				g.drawRect(i*pixelHeighOfCell, 0, 1, Settings.WINDOW_SIZE_Y);
 			}
 		}
 		
 		g.setColor(Settings.CELL_COLOR);
-		for (int i = 0; i < nbCellWidth; i++) {
-			for (int j = 0; j < nbCellHeigh; j++) {
+		for (int i = 0; i < Settings.NB_CELL_WIDTH; i++) {
+			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
 				if(universe.isCell(i, j))
 					g.fillRect(i*pixelWidthOfCell, j*pixelHeighOfCell, pixelWidthOfCell, pixelHeighOfCell);
 			}
