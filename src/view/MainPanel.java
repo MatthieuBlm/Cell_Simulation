@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import main.Settings;
-import model.Universe;
+import universe.Universe;
 
 public class MainPanel extends JPanel{
 	private static final long serialVersionUID = -3590785491709470949L;
@@ -23,6 +23,7 @@ public class MainPanel extends JPanel{
 		pixelHeighOfCell = Settings.WINDOW_SIZE_Y / Settings.NB_CELL_HEIGH;
 	}
 	
+	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
@@ -39,9 +40,13 @@ public class MainPanel extends JPanel{
 		g.setColor(Settings.CELL_COLOR);
 		for (int i = 0; i < Settings.NB_CELL_WIDTH; i++) {
 			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
-				if(universe.isCell(i, j))
+				if(universe.isCell(i, j)){
+					g.setColor(universe.getCell(i, j).getCellColor());
 					g.fillRect(i*pixelWidthOfCell, j*pixelHeighOfCell, pixelWidthOfCell, pixelHeighOfCell);
+				}
 			}
 		}
+		
+		universe.drawSpecialCell(g);
 	}
 }

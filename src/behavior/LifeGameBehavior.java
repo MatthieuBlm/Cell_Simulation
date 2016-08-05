@@ -1,7 +1,6 @@
 package behavior;
 
-import model.Universe;
-import exception.NotLivingCellException;
+import universe.Universe;
 
 public class LifeGameBehavior extends CellBehavior{
 
@@ -15,7 +14,7 @@ public class LifeGameBehavior extends CellBehavior{
 	}
 
 	@Override
-	public boolean canDie(int x, int y) throws NotLivingCellException {
+	public boolean canDie(int x, int y) {
 		return this.getNeighbourNumber(x, y) != 2 && 
 				this.getNeighbourNumber(x, y) != 3 && 
 				universe.getCell(x, y) != null;

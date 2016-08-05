@@ -1,0 +1,56 @@
+package universe;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Random;
+
+import main.Settings;
+import cell.Ant;
+import cell.Cell;
+
+public class LangtonAntUniverse extends Universe {
+	private Ant ant;
+	
+	public LangtonAntUniverse(){
+		super();
+	}
+	
+	@Override
+	public void initUniverse() {
+		randomlyBuildUnivers();
+//		for (int i = 0; i < Settings.NB_CELL_WIDTH; i++) {
+//			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
+//				bufferedMap[i][j] = new Cell(Color.WHITE);
+//			}
+//		}
+//		
+//		validateBuffer();
+//		
+//		ant = new Ant(Settings.NB_CELL_WIDTH / 2, Settings.NB_CELL_HEIGH / 2);
+	}
+	
+	public void randomlyBuildUnivers(){
+		Random rand = new Random();
+		
+		for (int i = 0; i < Settings.NB_CELL_WIDTH; i++) {
+			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
+				bufferedMap[i][j] = (rand.nextDouble() <= Settings.CELL_RATE ? new Cell(Color.BLACK) : new Cell(Color.WHITE));
+			}
+		}
+		
+		validateBuffer();
+		
+		ant = new Ant(Settings.NB_CELL_WIDTH / 2, Settings.NB_CELL_HEIGH / 2);
+	}
+	
+	@Override
+	public void drawSpecialCell(Graphics g) {
+		g.setColor(ant.getCellColor());
+		g.fillRect(ant.getX() * Settings.CELL_SIZE_X, ant.getY() * Settings.CELL_SIZE_Y, Settings.CELL_SIZE_X, Settings.CELL_SIZE_Y);
+	}
+	
+	public Ant getAnt(){
+		return ant;
+	}
+
+}

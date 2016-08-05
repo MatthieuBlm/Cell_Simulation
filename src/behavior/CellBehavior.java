@@ -1,6 +1,6 @@
 package behavior;
 
-import model.Universe;
+import universe.Universe;
 import exception.NotLivingCellException;
 
 public abstract class CellBehavior {
@@ -25,16 +25,15 @@ public abstract class CellBehavior {
 	 * @return True if the giving cell can die at (x, y) with such a universe, false otherwise.
 	 * @throws NotLivingCellException If there is no living cell at (x, y) location.
 	 */
-	public abstract boolean canDie(int x, int y) throws NotLivingCellException;
+	public abstract boolean canDie(int x, int y);
 	
 	/**
 	 * Inform if a cell at the location (x, y) can move.
 	 * @param x Horizontal cell position.
 	 * @param y Vertical cell position.
 	 * @return True if the giving cell can move with such a universe, false otherwise.
-	 * @throws NotLivingCellException If there is no living cell at (x, y) location.
 	 */
-	public abstract boolean canMove(int x, int y) throws NotLivingCellException;
+	public abstract boolean canMove(int x, int y);
 	
 	/**
 	 * Describe the cell move behavior. Make the giving cell at location (x, y) move to an other location.
