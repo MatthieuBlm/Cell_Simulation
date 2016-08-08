@@ -1,25 +1,47 @@
 package main;
 
 import universe.LangtonAntUniverse;
+import universe.LifeGameUniverse;
 import universe.Universe;
 import view.MainPanel;
 import view.Window;
 import behavior.CellBehavior;
 import behavior.LangtonAntBehavior;
+import behavior.LifeGameBehavior;
 import engine.Engine;
 import engine.LangtonAntEngine;
+import engine.LifeGameEngine;
 
 public class Main {
-
+	private static Universe universe;
+	private static MainPanel mainPanel;
+	private static CellBehavior behavior;
+	private static Engine engine;
+	private static Window window;
+	
 	public static void main(String[] args) {
-		Universe universe = new LangtonAntUniverse();
-		MainPanel mainPanel = new MainPanel(universe);
-		CellBehavior behavior = new LangtonAntBehavior(universe);
-		Engine engine = new LangtonAntEngine(universe, mainPanel, behavior);
 
-		Window window = new Window(mainPanel);
+		switch(args[0]){
+		case "LifeGame":
+			universe = new LifeGameUniverse();
+			behavior = new LifeGameBehavior(universe);
+			mainPanel = new MainPanel(universe);
+			window = new Window(mainPanel);
+			engine = new LifeGameEngine(universe, mainPanel, behavior);
+			break;
+		case "LangtonsAnt":
+			universe = new LangtonAntUniverse();
+			behavior = new LangtonAntBehavior(universe);
+			mainPanel = new MainPanel(universe);
+			window = new Window(mainPanel);
+			engine = new LangtonAntEngine(universe, mainPanel, behavior);
+			break;
+			default:
+				System.err.println("[Error] Unknown mode.");
+				return;
+		}
+
 		window.setVisible(true);
-		
 		engine.start();
 	}
 }
