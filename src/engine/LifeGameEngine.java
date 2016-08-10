@@ -19,7 +19,7 @@ public class LifeGameEngine extends Engine {
 					if(behavior.canDie(i, j))
 						universe.removeCell(i, j);
 					else if(behavior.canBorn(i, j))
-						universe.addCell(i, j);
+						universe.addSimpleCell(i, j);
 				}
 			}
 		}

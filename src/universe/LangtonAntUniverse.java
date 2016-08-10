@@ -4,9 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
-import main.Settings;
 import cell.Ant;
-import cell.Cell;
+import cell.SimpleCell;
+import main.Settings;
 
 public class LangtonAntUniverse extends Universe {
 	private Ant ant;
@@ -15,7 +15,7 @@ public class LangtonAntUniverse extends Universe {
 	public void initUniverse() {
 		for (int i = 0; i < Settings.NB_CELL_WIDTH; i++) {
 			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
-				bufferedMap[i][j] = new Cell(Color.WHITE);
+				bufferedMap[i][j] = new SimpleCell(Color.WHITE);
 			}
 		}
 		
@@ -29,7 +29,7 @@ public class LangtonAntUniverse extends Universe {
 		
 		for (int i = 0; i < Settings.NB_CELL_WIDTH; i++) {
 			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
-				bufferedMap[i][j] = (rand.nextDouble() <= Settings.CELL_RATE ? new Cell(Color.BLACK) : new Cell(Color.WHITE));
+				bufferedMap[i][j] = (rand.nextDouble() <= Settings.CELL_RATE ? new SimpleCell(Color.BLACK) : new SimpleCell(Color.WHITE));
 			}
 		}
 		

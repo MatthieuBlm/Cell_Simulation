@@ -3,6 +3,7 @@ package universe;
 import java.awt.Graphics;
 
 import cell.Cell;
+import cell.SimpleCell;
 import main.Settings;
 
 public abstract class Universe {
@@ -37,8 +38,8 @@ public abstract class Universe {
 		return  (map[x][y] instanceof Cell ? (Cell) map[x][y] : null);
 	}
 	
-	public void addCell(int x, int y){
-		bufferedMap[x][y] = new Cell();
+	public void addSimpleCell(int x, int y){
+		bufferedMap[x][y] = new SimpleCell();
 	}
 	
 	public void addObject(Object object, int x, int y){
@@ -47,6 +48,10 @@ public abstract class Universe {
 	
 	public void removeCell(int x, int y){
 		bufferedMap[x][y] = null;
+	}
+
+	public void addCell(Cell cell, int	x, int y) {
+		bufferedMap[x][y] = cell;
 	}
 	
 }

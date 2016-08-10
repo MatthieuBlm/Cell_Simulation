@@ -3,7 +3,7 @@ package universe;
 import java.awt.Graphics;
 import java.util.Random;
 
-import cell.Cell;
+import cell.SimpleCell;
 import main.Settings;
 
 public class LifeGameUniverse extends Universe{
@@ -21,7 +21,7 @@ public class LifeGameUniverse extends Universe{
 		
 		for (int i = 0; i < Settings.NB_CELL_WIDTH; i++) {
 			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
-				bufferedMap[i][j] = (rand.nextDouble() <= Settings.CELL_RATE ? new Cell() : null);
+				bufferedMap[i][j] = (rand.nextDouble() <= Settings.CELL_RATE ? new SimpleCell() : null);
 			}
 		}
 		
@@ -29,9 +29,9 @@ public class LifeGameUniverse extends Universe{
 	}
 	
 	public void buildOscillator(){
-		bufferedMap[3][3] = new Cell();
-		bufferedMap[3][4] = new Cell();
-		bufferedMap[3][5] = new Cell();
+		bufferedMap[3][3] = new SimpleCell();
+		bufferedMap[3][4] = new SimpleCell();
+		bufferedMap[3][5] = new SimpleCell();
 		
 		validateBuffer();
 	}

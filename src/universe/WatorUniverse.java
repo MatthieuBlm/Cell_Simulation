@@ -3,7 +3,7 @@ package universe;
 import java.awt.Graphics;
 import java.util.Random;
 
-import cell.WatorEntity;
+import cell.WatorCell;
 import main.Settings;
 
 public class WatorUniverse extends Universe {
@@ -23,7 +23,7 @@ public class WatorUniverse extends Universe {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[0].length; j++) {
 				if(rand.nextDouble() <= Settings.CELL_RATE){
-					map[i][j] = (rand.nextDouble() <= 0.5 ? new WatorEntity((rand.nextDouble() <= 0.5 ? "shark" : "fish")) : null)  ;
+					map[i][j] = (rand.nextDouble() <= 0.5 ? new WatorCell((rand.nextDouble() <= 0.5 ? "shark" : "fish")) : null)  ;
 				}
 			}
 		}

@@ -16,6 +16,10 @@ public class Ant extends Cell {
 		this.orientation = Settings.UP;
 	}
 
+	public Ant clone(){
+		return new Ant(x, y);
+	}
+	
 	public int getX() {
 		return x;
 	}

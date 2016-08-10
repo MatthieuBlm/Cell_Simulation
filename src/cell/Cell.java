@@ -3,8 +3,10 @@ package cell;
 import java.awt.Color;
 
 
-public class Cell {
-	private Color cellColor;
+public abstract class Cell {
+	protected Color cellColor;
+	
+	public abstract Cell clone();
 	
 	public Cell(){
 		this.cellColor = Color.GRAY;

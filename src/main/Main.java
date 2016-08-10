@@ -23,7 +23,10 @@ public class Main {
 	private static Window window;
 	
 	public static void main(String[] args) {
-
+		if(args.length == 0){
+			System.err.println("[Error] No parameter.");
+			return;
+		}
 		switch(args[0]){
 		case "LifeGame":
 			universe = new LifeGameUniverse();

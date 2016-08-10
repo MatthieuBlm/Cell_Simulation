@@ -2,10 +2,11 @@ package cell;
 
 import java.awt.Color;
 
-public class WatorEntity extends Cell {
+public class WatorCell extends Cell {
 	private String type;
+	private int step;
 	
-	public WatorEntity(String type){
+	public WatorCell(String type){
 		super();
 		this.type = type;
 		switch(type){
@@ -16,6 +17,11 @@ public class WatorEntity extends Cell {
 			this.setCellColor(Color.GREEN);
 			break;
 		}
+		setStep(0);
+	}
+	
+	public WatorCell clone(){
+		return new WatorCell(type);
 	}
 	
 	public boolean isShark(){
@@ -24,5 +30,13 @@ public class WatorEntity extends Cell {
 	
 	public boolean isFish(){
 		return this.type.equals("fish");
+	}
+
+	public int getStep() {
+		return step;
+	}
+
+	public void setStep(int step) {
+		this.step = step;
 	}
 }

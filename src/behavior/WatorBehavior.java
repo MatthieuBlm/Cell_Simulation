@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cell.WatorCell;
+import exception.NotLivingCellException;
 import main.Couple;
 import universe.Universe;
-import cell.WatorEntity;
-import exception.NotLivingCellException;
 
 public class WatorBehavior extends CellBehavior {
 
@@ -22,13 +22,15 @@ public class WatorBehavior extends CellBehavior {
 
 	@Override
 	public boolean canDie(int x, int y) {
-		// TODO Auto-generated method stub
-		return false;
+		return ((WatorCell) universe.getCell(x, y)).getStep() > 30 ? true : false;
 	}
 
 	@Override
 	public boolean canMove(int x, int y) {
-		return getNumberOfFreeCellAround(x, y) > 0;
+		if(((WatorCell) universe.getCell(x, y)).isFish())
+			return getNumberOfFreeCellAround(x, y) > 0;
+		else
+			return false;	
 	}
 
 	@Override
@@ -37,14 +39,14 @@ public class WatorBehavior extends CellBehavior {
 		List<Couple<Integer, Integer>> list = this.getFreeLocationAround(x, y);
 		Couple<Integer, Integer> destination = list.get(rand.nextInt(list.size()));
 		
-		universe.addObject(destination.getV1(), destination.getV2());
-		
+		universe.addCell(universe.getCell(x, y).clone(), destination.getV1(), destination.getV2());
+		universe.removeCell(x, y);
 		universe.validateBuffer();
 	}
 
 	@Override
 	public boolean isSimulable(Object object) {
-		return object instanceof WatorEntity;
+		return object instanceof WatorCell;
 	}
 	
 	private int getNumberOfFreeCellAround(int x, int y){
