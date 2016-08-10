@@ -11,22 +11,17 @@ import cell.Cell;
 public class LangtonAntUniverse extends Universe {
 	private Ant ant;
 	
-	public LangtonAntUniverse(){
-		super();
-	}
-	
 	@Override
 	public void initUniverse() {
-		randomlyBuildUnivers();
-//		for (int i = 0; i < Settings.NB_CELL_WIDTH; i++) {
-//			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
-//				bufferedMap[i][j] = new Cell(Color.WHITE);
-//			}
-//		}
-//		
-//		validateBuffer();
-//		
-//		ant = new Ant(Settings.NB_CELL_WIDTH / 2, Settings.NB_CELL_HEIGH / 2);
+		for (int i = 0; i < Settings.NB_CELL_WIDTH; i++) {
+			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
+				bufferedMap[i][j] = new Cell(Color.WHITE);
+			}
+		}
+		
+		validateBuffer();
+		
+		ant = new Ant(Settings.NB_CELL_WIDTH / 2, Settings.NB_CELL_HEIGH / 2);
 	}
 	
 	public void randomlyBuildUnivers(){

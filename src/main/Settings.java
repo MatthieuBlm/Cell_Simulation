@@ -5,14 +5,14 @@ import java.awt.Color;
 public abstract class Settings {
 	// Base
 	public static final String APPLICATION_TITLE 	= "Super Cell Simulator 3000";
-	public static final int WINDOW_SIZE_X 			= 800;
-	public static final int WINDOW_SIZE_Y 			= 800;
+	public static final int WINDOW_SIZE_X 			= 1800;
+	public static final int WINDOW_SIZE_Y 			= 1000;
 			
 	// Simulation
-	public static final double CELL_RATE 			= 0.2;									// Between 0 and 1, used for generate random universe
-	public static final int NB_CELL_WIDTH 			= 400;
-	public static final int NB_CELL_HEIGH 			= 400;
-	public static final long PARIOD_DURATION 		= 1;									// In milliseconds
+	public static final double CELL_RATE 			= 0.6;									// Between 0 and 1, used for generate random universe
+	public static final int NB_CELL_WIDTH 			= 1800;
+	public static final int NB_CELL_HEIGH 			= 1000;
+	public static final long PARIOD_DURATION 		= 0;									// In milliseconds
 	public static final int UP 						= 0;
 	public static final int RIGHT					= 1;
 	public static final int DOWN					= 2;

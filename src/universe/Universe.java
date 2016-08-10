@@ -41,8 +41,12 @@ public abstract class Universe {
 		bufferedMap[x][y] = new Cell();
 	}
 	
+	public void addObject(Object object, int x, int y){
+		bufferedMap[x][y] = object;
+	}
+	
 	public void removeCell(int x, int y){
 		bufferedMap[x][y] = null;
 	}
-
+	
 }
