@@ -6,6 +6,7 @@ import main.Settings;
 import universe.LangtonAntUniverse;
 import universe.Universe;
 import cell.Ant;
+import cell.Cell;
 import exception.NotLivingCellException;
 
 public class LangtonAntBehavior extends CellBehavior {
@@ -30,8 +31,10 @@ public class LangtonAntBehavior extends CellBehavior {
 	}
 
 	@Override
-	public void move(int x, int y) throws NotLivingCellException {
+	public void move(int x, int y){
 		Ant ant = ((LangtonAntUniverse) universe).getAnt();
+		
+		universe.getCell(ant.getX(), ant.getY());
 		
 		switch(ant.getOrientation()){
 		case Settings.UP :
@@ -70,8 +73,6 @@ public class LangtonAntBehavior extends CellBehavior {
 				ant.setOrientation(Settings.UP);
 			}
 			break;
-			default :
-				throw new NotLivingCellException();
 		}
 		
 		if(universe.getCell(x, y).getCellColor() == Color.WHITE) 		universe.getCell(x, y).setCellColor(Color.BLACK);

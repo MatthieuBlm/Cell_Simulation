@@ -3,8 +3,9 @@ package universe;
 import java.awt.Graphics;
 import java.util.Random;
 
-import cell.WatorCell;
 import main.Settings;
+import cell.Cell;
+import cell.WatorCell;
 
 public class WatorUniverse extends Universe {
 	
@@ -27,6 +28,24 @@ public class WatorUniverse extends Universe {
 				}
 			}
 		}
+	}
+	
+	public boolean isShark(int x, int y){
+		Cell cell = this.getCell(x, y);
+		if(!(cell instanceof WatorCell))
+			return false;
+		if(((WatorCell) cell).isShark())
+			return true;
+		return false;
+	}
+	
+	public boolean isFish(int x, int y){
+		Cell cell = this.getCell(x, y);
+		if(!(cell instanceof WatorCell))
+			return false;
+		if(((WatorCell) cell).isFish())
+			return true;
+		return false;
 	}
 	
 	@Override

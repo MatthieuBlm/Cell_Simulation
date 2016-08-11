@@ -13,13 +13,8 @@ public class LangtonAntEngine extends Engine {
 		super(universe, mainPanel, behavior);
 	}
 	
-
 	@Override
 	public void next() {
-		try {
-			behavior.move(((LangtonAntUniverse) universe).getAnt().getX(), ((LangtonAntUniverse) universe).getAnt().getY());
-		} catch (NotLivingCellException e) {
-			e.printStackTrace();
-		}
+		behavior.move(((LangtonAntUniverse) universe).getAnt().getX(), ((LangtonAntUniverse) universe).getAnt().getY());
 	}
 }

@@ -48,6 +48,7 @@ public class Main {
 			mainPanel = new MainPanel(universe);
 			window = new Window(mainPanel);
 			engine = new WatorEngine(universe, mainPanel, behavior);
+			break;
 			default:
 				System.err.println("[Error] Unknown mode.");
 				return;

@@ -39,9 +39,8 @@ public abstract class CellBehavior {
 	 * Describe the cell move behavior. Make the giving cell at location (x, y) move to an other location.
 	 * @param x Horizontal cell position.
 	 * @param y Vertical cell position.
-	 * @throws NotLivingCellException If there is no living cell at (x, y) location.
 	 */
-	public abstract void move(int x, int y) throws NotLivingCellException;
+	public abstract void move(int x, int y);
 	
 	/**
 	 * Specify whether the given object can be subject to behavioral rules.
