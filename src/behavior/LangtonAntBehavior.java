@@ -33,7 +33,7 @@ public class LangtonAntBehavior extends CellBehavior {
 	}
 
 	@Override
-	public void move(int x, int y){
+	public Cell move(int x, int y){
 		Ant ant = ((LangtonAntUniverse) universe).getAnt();
 		
 		universe.getCell(ant.getX(), ant.getY());
@@ -79,6 +79,8 @@ public class LangtonAntBehavior extends CellBehavior {
 		
 		if(universe.getCell(x, y).getCellColor() == Color.WHITE) 		universe.getCell(x, y).setCellColor(Color.BLACK);
 		else if(universe.getCell(x, y).getCellColor() == Color.BLACK) 	universe.getCell(x, y).setCellColor(Color.WHITE);
+		
+		return ant;
 	}
 
 	@Override

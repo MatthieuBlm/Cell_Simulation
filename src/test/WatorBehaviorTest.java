@@ -13,6 +13,7 @@ import behavior.WatorBehavior;
 import cell.SimpleCell;
 import cell.WatorCell;
 import main.Couple;
+import main.Settings;
 import universe.WatorUniverse;
 
 public class WatorBehaviorTest {
@@ -107,5 +108,17 @@ public class WatorBehaviorTest {
 		assertTrue(behavior.isSimulable(new WatorCell("shark")));
 		assertFalse(behavior.isSimulable(new SimpleCell()));
 		assertFalse(behavior.isSimulable("Hello World"));
+	}
+	
+	@Test
+	public final void testCanDie(){
+		assertFalse(behavior.canDie(5, 3));
+		
+		WatorCell cell = (WatorCell) universe.getCell(5, 3);
+		
+		while(cell.getEnergy() > 0)
+			cell.decrementEnergy();
+		
+		assertTrue(behavior.canDie(5, 3));
 	}
 }

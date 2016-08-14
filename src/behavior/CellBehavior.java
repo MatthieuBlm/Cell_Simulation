@@ -4,6 +4,7 @@ import universe.Universe;
 
 import java.util.List;
 
+import cell.Cell;
 import exception.NotLivingCellException;
 import main.Couple;
 
@@ -43,8 +44,9 @@ public abstract class CellBehavior {
 	 * Describe the cell move behavior. Make the giving cell at location (x, y) move to an other location.
 	 * @param x Horizontal cell position.
 	 * @param y Vertical cell position.
+	 * @return The cell moved.
 	 */
-	public abstract void move(int x, int y);
+	public abstract Cell move(int x, int y);
 	
 	/**
 	 * Specify whether the given object can be subject to behavioral rules.

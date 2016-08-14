@@ -2,10 +2,9 @@ package engine;
 
 import javax.swing.JPanel;
 
+import behavior.CellBehavior;
 import main.Settings;
 import universe.Universe;
-import universe.UniverseWithBufferedCalcul;
-import behavior.CellBehavior;
 
 public abstract class Engine {
 	protected Universe universe;

@@ -81,7 +81,7 @@ public class WatorCellTest {
 	public final void testCanReproduce(){
 		assertFalse(shark.canReproduce());
 		
-		while(shark.getReproductionStep() < Settings.REPRODUCTION_STEPS)
+		while(shark.getReproductionStep() < Settings.SHARK_REPRODUCTION_STEPS)
 			shark.incrementReproductionStep();
 		
 		assertTrue(shark.canReproduce());

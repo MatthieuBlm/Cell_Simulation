@@ -62,7 +62,7 @@ public class WatorCell extends Cell {
 	}
 
 	public void decrementEnergy() {
-		this.energy--;
+		--this.energy ;
 	}
 	
 	public void initialiseEnergy() {
@@ -74,7 +74,7 @@ public class WatorCell extends Cell {
 	}
 
 	public void incrementReproductionStep() {
-		this.reproductionStep += 1;
+		++this.reproductionStep;
 	}
 	
 	public void initialiseReproductionStep() {
@@ -82,7 +82,12 @@ public class WatorCell extends Cell {
 	}
 
 	public boolean canReproduce() {
-		return this.reproductionStep >= Settings.REPRODUCTION_STEPS;
+		if(this.isFish())
+			return this.reproductionStep >= Settings.FISH_REPRODUCTION_STEPS;
+		else if(this.isShark())
+			return this.reproductionStep >= Settings.SHARK_REPRODUCTION_STEPS;
+			
+		return false;
 	}
 
 	public void increaseEnergy(int i) {

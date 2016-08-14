@@ -24,7 +24,7 @@ public class WatorUniverse extends SimpleUniverse {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[0].length; j++) {
 				if(rand.nextDouble() <= Settings.CELL_RATE){
-					map[i][j] = (rand.nextDouble() <= 0.5 ? new WatorCell((rand.nextDouble() <= 0.5 ? "shark" : "fish")) : null)  ;
+					map[i][j] = (rand.nextDouble() <= 0.5 ? new WatorCell((rand.nextDouble() <= Settings.CELL_BALANCE ? "shark" : "fish")) : null)  ;
 				}
 			}
 		}

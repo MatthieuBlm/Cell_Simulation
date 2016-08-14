@@ -4,8 +4,6 @@ import behavior.CellBehavior;
 import behavior.LangtonAntBehavior;
 import behavior.LifeGameBehavior;
 import behavior.WatorBehavior;
-import cell.Cell;
-import cell.WatorCell;
 import engine.Engine;
 import engine.LangtonAntEngine;
 import engine.LifeGameEngine;

@@ -2,6 +2,7 @@ package behavior;
 
 import java.util.List;
 
+import cell.Cell;
 import main.Couple;
 import universe.Universe;
 
@@ -29,7 +30,7 @@ public class LifeGameBehavior extends CellBehavior{
 	}
 
 	@Override
-	public void move(int x, int y) {}
+	public Cell move(int x, int y) { return null;}
 	
 	@Override
 	public boolean isSimulable(Object object) {

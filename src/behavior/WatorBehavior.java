@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cell.Cell;
+import cell.WatorCell;
 import main.CellAround;
 import main.Couple;
 import universe.Universe;
 import universe.WatorUniverse;
-import cell.WatorCell;
 
 public class WatorBehavior extends CellBehavior {
 
@@ -26,43 +27,60 @@ public class WatorBehavior extends CellBehavior {
 		WatorCell cell = (WatorCell) universe.getCell(x, y);
 	
 		if(cell.isShark())
-			return ( ((WatorCell) universe.getCell(x, y)).getEnergy() == 0 ? true : false );
+			return ( cell.getEnergy() <= 0 ? true : false );
 
 		return false;
 	}
 
 	@Override
 	public boolean canMove(int x, int y) {
-		if(((WatorCell) universe.getCell(x, y)).isFish())
+		if(!universe.isCell(x, y))
+			return false;
+		
+		WatorCell cell = (WatorCell) universe.getCell(x, y);
+		
+		if(cell.isFish()){
 			return getNumberOfFreeCellAround(x, y) > 0;
-		else if(((WatorCell) universe.getCell(x, y)).isShark())
-			return getNumberOfSharkAround(x, y) < 8;
+		}else if(cell.isShark()){
+			if(this.getFishLocationAround(x, y).size() > 0){
+				return true;
+			}else if(this.getNumberOfFreeCellAround(x, y) > 0)
+				return true;
+		}
+		
 		return false;
 	}
 
 	@Override
-	public void move(int x, int y) {
+	public Cell move(int x, int y) {
 		Random rand = new Random();
 		List<Couple<Integer, Integer>> freeCellList = this.getFreeLocationAround(x, y);
 		WatorCell cell = (WatorCell) universe.getCell(x, y);
+		WatorCell movedCell = null;
+		
 		if(cell.isShark()){
 			List<Couple<Integer, Integer>> listOfFish = this.getFishLocationAround(x, y);
 			if(listOfFish.size() > 0){
 				Couple<Integer, Integer> destination = listOfFish.get(rand.nextInt(listOfFish.size()));
 				universe.removeCell(destination.getV1(), destination.getV2());
-				universe.addCell(cell.clone(), destination.getV1(), destination.getV2());
+				movedCell = cell.clone();
+				universe.addCell(movedCell, destination.getV1(), destination.getV2());
 				universe.removeCell(x, y);
 				cell.increaseEnergy(30);
 			}else if(freeCellList.size() > 0){
 				Couple<Integer, Integer> destination = freeCellList.get(rand.nextInt(freeCellList.size()));
-				universe.addCell(cell.clone(), destination.getV1(), destination.getV2());
+				movedCell = cell.clone();
+				universe.addCell(movedCell, destination.getV1(), destination.getV2());
 				universe.removeCell(x, y);
 			}
 		}else if(freeCellList.size() > 0){
 			Couple<Integer, Integer> destination = freeCellList.get(rand.nextInt(freeCellList.size()));
-			universe.addCell(cell.clone(), destination.getV1(), destination.getV2());
+			movedCell = cell.clone();
+			universe.addCell(movedCell, destination.getV1(), destination.getV2());
 			universe.removeCell(x, y);
 		}
+		
+		return movedCell;
 	}
 
 	@Override

@@ -20,19 +20,21 @@ public class WatorEngine extends Engine {
 			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
 				if(behavior.isSimulable(universe.getCell(i, j))){
 					tmpCell = (WatorCell) universe.getCell(i, j);
-					if(behavior.canDie(i, j))
+					if(behavior.canDie(i, j)){
 						universe.removeCell(i, j);
-					else if(behavior.canMove(i, j)){
-						behavior.move(i, j);
 					}
-					if(tmpCell.canReproduce()){
-						System.out.println("repro");
-						universe.addCell((tmpCell.isShark() ? new WatorCell("shark") : new WatorCell("fish")), i, j);
-						tmpCell.initialiseReproductionStep();
+					else{
+						if(behavior.canMove(i, j)){
+							tmpCell = (WatorCell) behavior.move(i, j);
+						}
+						if(tmpCell.canReproduce()){
+							universe.addCell((tmpCell.isShark() ? new WatorCell("shark") : new WatorCell("fish")), i, j);
+							tmpCell.initialiseReproductionStep();
+						}
+						tmpCell.incrementReproductionStep();
+						tmpCell.decrementEnergy();
 					}
 
-					tmpCell.incrementReproductionStep();
-					tmpCell.decrementEnergy();
 				}
 			}
 		}
