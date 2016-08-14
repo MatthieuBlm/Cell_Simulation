@@ -1,7 +1,9 @@
 package behavior;
 
 import java.awt.Color;
+import java.util.List;
 
+import main.Couple;
 import main.Settings;
 import universe.LangtonAntUniverse;
 import universe.Universe;
@@ -82,6 +84,18 @@ public class LangtonAntBehavior extends CellBehavior {
 	@Override
 	public boolean isSimulable(Object object) {
 		return object instanceof Ant;
+	}
+
+	@Override
+	public int getNumberOfFreeCellAround(int x, int y) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Couple<Integer, Integer>> getFreeLocationAround(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

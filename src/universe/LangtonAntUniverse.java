@@ -8,7 +8,7 @@ import cell.Ant;
 import cell.SimpleCell;
 import main.Settings;
 
-public class LangtonAntUniverse extends Universe {
+public class LangtonAntUniverse extends UniverseWithBufferedCalcul {
 	private Ant ant;
 	
 	@Override

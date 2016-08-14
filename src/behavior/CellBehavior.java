@@ -1,7 +1,11 @@
 package behavior;
 
 import universe.Universe;
+
+import java.util.List;
+
 import exception.NotLivingCellException;
+import main.Couple;
 
 public abstract class CellBehavior {
 	protected Universe universe;
@@ -48,4 +52,8 @@ public abstract class CellBehavior {
 	 * @return True if the given object can be simulate, false otherwise.
 	 */
 	public abstract boolean isSimulable(Object object);
+	
+	public abstract int getNumberOfFreeCellAround(int x, int y);
+	
+	public abstract List<Couple<Integer, Integer>> getFreeLocationAround(int x, int y);
 }

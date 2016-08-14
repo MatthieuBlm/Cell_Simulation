@@ -3,13 +3,14 @@ package engine;
 import javax.swing.JPanel;
 
 import universe.Universe;
+import universe.UniverseWithBufferedCalcul;
 import behavior.CellBehavior;
 import main.Settings;
 
 public class LifeGameEngine extends Engine {
 	
 	public LifeGameEngine(Universe universe, JPanel mainPanel, CellBehavior behavior) {
-		super(universe, mainPanel, behavior);
+		super((UniverseWithBufferedCalcul) universe, mainPanel, behavior);
 	}
 
 	public void next(){
@@ -23,6 +24,6 @@ public class LifeGameEngine extends Engine {
 				}
 			}
 		}
-		universe.validateBuffer();
+		((UniverseWithBufferedCalcul) universe).validateBuffer();
 	}
 }

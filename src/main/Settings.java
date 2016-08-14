@@ -19,7 +19,7 @@ public abstract class Settings {
 	public static final int LEFT					= 3;
 	// 			Wator Simultation
 	public static final int REPRODUCTION_STEPS 		= 15;
-	public static final int SHARK_ENERGIE			= 30;
+	public static final int SHARK_ENERGIE			= 20;
 
 	// Display
 	public static final Color CELL_COLOR 			= Color.GRAY;

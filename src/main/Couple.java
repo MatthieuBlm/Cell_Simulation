@@ -24,4 +24,22 @@ public class Couple<T1, T2> {
 	public void setV2(T2 v2) {
 		this.v2 = v2;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		if(!(o instanceof Couple))
+			return false;
+		
+		Couple c = (Couple) o;
+		
+		if(!c.getV1().equals(this.v1) || !c.getV2().equals(this.v2))
+			return false;
+		
+		return true;
+	}
+	
+	@Override
+	public String toString(){
+		return "v1 = " + this.v1 + "; v2 = " + this.v2 + ";";
+	}
 }

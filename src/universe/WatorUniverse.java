@@ -7,7 +7,7 @@ import main.Settings;
 import cell.Cell;
 import cell.WatorCell;
 
-public class WatorUniverse extends Universe {
+public class WatorUniverse extends SimpleUniverse {
 	
 	@Override
 	public void initUniverse() {
@@ -54,4 +54,38 @@ public class WatorUniverse extends Universe {
 
 	}
 
+	public void printUniverse(){
+		for (int j = 0; j < map[0].length; j++) {
+			for (int i = 0; i < map.length; i++) {
+				if(this.isCell(i, j)){
+					if(this.isFish(i, j))
+						System.out.print("F ");
+					else if(this.isShark(i, j))
+						System.out.print("S ");
+						
+				}else
+					System.out.print("O ");
+			}
+			System.out.println("");
+		}
+	}
+	
+	public void printUniverseLimit(int x, int y){
+		System.out.print("  ");
+		for (int i = 0; i < x; i++) {
+			System.out.print(i+" ");
+		}
+		for (int j = 0; j < y; j++) {
+			System.out.print("\n" + j + " ");
+			for (int i = 0; i < x; i++) {
+				if(this.isCell(i, j)){
+					if(this.isFish(i, j))
+						System.out.print("F ");
+					else if(this.isShark(i, j))
+						System.out.print("S ");
+				}else
+					System.out.print("O ");
+			}
+		}
+	}
 }

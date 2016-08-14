@@ -22,13 +22,13 @@ public class WatorEngine extends Engine {
 					tmpCell = (WatorCell) universe.getCell(i, j);
 					if(behavior.canDie(i, j))
 						universe.removeCell(i, j);
-					
-					if(behavior.canMove(i, j)){
+					else if(behavior.canMove(i, j)){
 						behavior.move(i, j);
-						if(tmpCell.canReproduce()){
-							universe.addCell((tmpCell.isShark() ? new WatorCell("shark") : new WatorCell("fish")), i, j);
-							tmpCell.initialiseReproductionStep();
-						}
+					}
+					if(tmpCell.canReproduce()){
+						System.out.println("repro");
+						universe.addCell((tmpCell.isShark() ? new WatorCell("shark") : new WatorCell("fish")), i, j);
+						tmpCell.initialiseReproductionStep();
 					}
 
 					tmpCell.incrementReproductionStep();
@@ -36,6 +36,5 @@ public class WatorEngine extends Engine {
 				}
 			}
 		}
-		universe.validateBuffer();
 	}
 }

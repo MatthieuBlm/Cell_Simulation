@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import main.Settings;
 import universe.Universe;
+import universe.UniverseWithBufferedCalcul;
 import behavior.CellBehavior;
 
 public abstract class Engine {

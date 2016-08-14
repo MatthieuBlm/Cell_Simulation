@@ -70,7 +70,7 @@ public class WatorBehavior extends CellBehavior {
 		return object instanceof WatorCell;
 	}
 	
-	private int getNumberOfFreeCellAround(int x, int y){
+	public int getNumberOfFreeCellAround(int x, int y){
 		int nb = 0;
 		CellAround cellAround = new CellAround(x, y);
 		for (Couple<Integer, Integer> couple : cellAround.getAllCellLocationAroundThis()) {
@@ -82,7 +82,7 @@ public class WatorBehavior extends CellBehavior {
 		return nb;
 	}
 	
-	private List<Couple<Integer, Integer>> getFreeLocationAround(int x, int y){
+	public List<Couple<Integer, Integer>> getFreeLocationAround(int x, int y){
 		ArrayList<Couple<Integer, Integer>> list = new ArrayList<>();
 		CellAround cellAround = new CellAround(x, y);
 		for (Couple<Integer, Integer> couple : cellAround.getAllCellLocationAroundThis()) {

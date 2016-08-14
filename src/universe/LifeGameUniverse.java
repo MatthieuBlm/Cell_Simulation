@@ -6,7 +6,7 @@ import java.util.Random;
 import cell.SimpleCell;
 import main.Settings;
 
-public class LifeGameUniverse extends Universe{
+public class LifeGameUniverse extends UniverseWithBufferedCalcul{
 	
 	public LifeGameUniverse(){
 		super();

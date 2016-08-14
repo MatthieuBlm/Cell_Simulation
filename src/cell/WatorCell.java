@@ -50,11 +50,11 @@ public class WatorCell extends Cell {
 	}
 	
 	public boolean isShark(){
-		return this.type.equals("shark");
+		return this.type.equalsIgnoreCase("shark");
 	}
 	
 	public boolean isFish(){
-		return this.type.equals("fish");
+		return this.type.equalsIgnoreCase("fish");
 	}
 
 	public int getEnergy() {
@@ -74,7 +74,7 @@ public class WatorCell extends Cell {
 	}
 
 	public void incrementReproductionStep() {
-		this.reproductionStep++;
+		this.reproductionStep += 1;
 	}
 	
 	public void initialiseReproductionStep() {

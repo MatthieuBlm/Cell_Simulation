@@ -2,15 +2,15 @@ package engine;
 
 import javax.swing.JPanel;
 
-import exception.NotLivingCellException;
+import behavior.CellBehavior;
 import universe.LangtonAntUniverse;
 import universe.Universe;
-import behavior.CellBehavior;
+import universe.UniverseWithBufferedCalcul;
 
 public class LangtonAntEngine extends Engine {
 
 	public LangtonAntEngine(Universe universe, JPanel mainPanel, CellBehavior behavior){
-		super(universe, mainPanel, behavior);
+		super((UniverseWithBufferedCalcul) universe, mainPanel, behavior);
 	}
 	
 	@Override
