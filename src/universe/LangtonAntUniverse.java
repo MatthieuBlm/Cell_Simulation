@@ -48,4 +48,10 @@ public class LangtonAntUniverse extends UniverseWithBufferedCalcul {
 		return ant;
 	}
 
+	@Override
+	public boolean remainingBothSpecies() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

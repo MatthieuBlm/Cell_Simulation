@@ -38,5 +38,11 @@ public class LifeGameUniverse extends UniverseWithBufferedCalcul{
 
 	@Override
 	public void drawSpecialCell(Graphics g) {}
+
+	@Override
+	public boolean remainingBothSpecies() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

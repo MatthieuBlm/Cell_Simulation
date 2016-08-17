@@ -1,5 +1,11 @@
 package main;
 
+import universe.LangtonAntUniverse;
+import universe.LifeGameUniverse;
+import universe.Universe;
+import universe.WatorUniverse;
+import view.MainPanel;
+import view.Window;
 import behavior.CellBehavior;
 import behavior.LangtonAntBehavior;
 import behavior.LifeGameBehavior;
@@ -8,12 +14,6 @@ import engine.Engine;
 import engine.LangtonAntEngine;
 import engine.LifeGameEngine;
 import engine.WatorEngine;
-import universe.LangtonAntUniverse;
-import universe.LifeGameUniverse;
-import universe.Universe;
-import universe.WatorUniverse;
-import view.MainPanel;
-import view.Window;
 
 public class Main {
 	private static Universe universe;
@@ -21,6 +21,7 @@ public class Main {
 	private static CellBehavior behavior;
 	private static Engine engine;
 	private static Window window;
+	private static SettingsGenerator settingsGenerator;
 	
 	public static void main(String[] args) {
 		if(args.length == 0){
@@ -43,18 +44,29 @@ public class Main {
 			engine = new LangtonAntEngine(universe, mainPanel, behavior);
 			break;
 		case "Wator":
+			settingsGenerator  = new SettingsGenerator();
 			universe = new WatorUniverse();
 			behavior = new WatorBehavior(universe);
 			mainPanel = new MainPanel(universe);
 			window = new Window(mainPanel);
-			engine = new WatorEngine(universe, mainPanel, behavior);
+			engine = new WatorEngine(universe, mainPanel, behavior, settingsGenerator);
 			break;
 			default:
 				System.err.println("[Error] Unknown mode : "+args[0]);
 				return;
 		}
-
+		
 		window.setVisible(true);
-		engine.start();
+		
+		while(true){
+			if(!Engine.isRunning){
+				universe.initUniverse();
+				System.out.println("[INFO] Attempt n°"+settingsGenerator.next());
+				SettingsGenerator.startTimestamp = System.currentTimeMillis();
+				engine.start();
+				Engine.isRunning = true;
+			}
+			window.pack();
+		}
 	}
 }

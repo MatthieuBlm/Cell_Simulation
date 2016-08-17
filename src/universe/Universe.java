@@ -18,6 +18,7 @@ public abstract class Universe {
 	public abstract void addObject(Object object, int x, int y);
 	public abstract void removeCell(int x, int y);
 	public abstract void addCell(Cell cell, int x, int y);
+	public abstract boolean remainingBothSpecies();
 	
 	public Object getObject(int x, int y){
 		return map[x][y];
@@ -30,6 +31,7 @@ public abstract class Universe {
 	public Cell getCell(int x, int y){
 		return  (map[x][y] instanceof Cell ? (Cell) map[x][y] : null);
 	}
+
 
 	
 	

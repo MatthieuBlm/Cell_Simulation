@@ -88,4 +88,19 @@ public class WatorUniverse extends SimpleUniverse {
 			}
 		}
 	}
+	
+	public boolean remainingBothSpecies(){
+		boolean oneOrMoreFish = false;
+		boolean oneOrMoreShark = false;
+		
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map[0].length; j++) {
+				if(this.isFish(i, j) && !oneOrMoreFish)
+					oneOrMoreFish = true;
+				else if(this.isShark(i, j) && ! oneOrMoreShark)
+					oneOrMoreShark = true;
+			}
+		}
+		return oneOrMoreFish && oneOrMoreShark;
+	}
 }

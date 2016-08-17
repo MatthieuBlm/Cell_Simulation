@@ -3,14 +3,15 @@ package engine;
 import javax.swing.JPanel;
 
 import main.Settings;
+import main.SettingsGenerator;
 import universe.Universe;
 import behavior.CellBehavior;
 import cell.WatorCell;
 
 public class WatorEngine extends Engine {
-
-	public WatorEngine(Universe universe, JPanel mainPanel, CellBehavior behavior) {
-		super(universe, mainPanel, behavior);
+	
+	public WatorEngine(Universe universe, JPanel mainPanel, CellBehavior behavior, SettingsGenerator settingsGenerator) {
+		super(universe, mainPanel, behavior, settingsGenerator);
 	}
 
 	@Override

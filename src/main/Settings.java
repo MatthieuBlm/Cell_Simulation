@@ -12,7 +12,7 @@ public abstract class Settings {
 	public static double CELL_RATE 					= 0.7;				// Between 0 and 1, used for generate random universe
 	public static final int NB_CELL_WIDTH 			= 200;
 	public static final int NB_CELL_HEIGH 			= 200;
-	public static final long PARIOD_DURATION 		= 50;				// In milliseconds
+	public static final long PARIOD_DURATION 		= 0;				// In milliseconds
 	public static final int UP 						= 0;
 	public static final int RIGHT					= 1;
 	public static final int DOWN					= 2;
