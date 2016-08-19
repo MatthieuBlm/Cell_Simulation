@@ -5,14 +5,14 @@ import java.awt.Color;
 public abstract class Settings {
 	// Base
 	public static final String APPLICATION_TITLE 	= "Super Cell Simulator 3000";
-	public static final int WINDOW_SIZE_X 			= 500;
-	public static final int WINDOW_SIZE_Y 			= 500;
+	public static final int WINDOW_SIZE_X 			= 800;
+	public static final int WINDOW_SIZE_Y 			= 300;
 			
 	// Simulation
 	public static final double CELL_RATE 			= 0.2;				// Between 0 and 1, used for generate random universe
-	public static final int NB_CELL_WIDTH 			= 100;
-	public static final int NB_CELL_HEIGH 			= 100;
-	public static final long PARIOD_DURATION 		= 100;				// In milliseconds
+	public static final int NB_CELL_WIDTH 			= 800;
+	public static final int NB_CELL_HEIGH 			= 300;
+	public static final long PARIOD_DURATION 		= 25;				// In milliseconds
 	public static final int UP 						= 0;
 	public static final int RIGHT					= 1;
 	public static final int DOWN					= 2;
@@ -20,10 +20,10 @@ public abstract class Settings {
 	
 	// 			Wator Simultation
 	public static final int FISH_REPRODUCTION_STEPS 	= 10;
-	public static final int SHARK_REPRODUCTION_STEPS 	= 50;
-	public static final int SHARK_ENERGIE				= 30;
-	public static final double CELL_BALANCE 			= 0.3;					// Balance between Sharks and Fish. 0 = Only fish, 1 = only shark
-	public static final int ENERGY_RESTORE_BY_EATING	= 50;
+	public static final int SHARK_REPRODUCTION_STEPS 	= 70;
+	public static final int SHARK_ENERGIE				= 10;
+	public static final double CELL_BALANCE 			= 0.2;					// Balance between Sharks and Fish. 0 = Only fish, 1 = only shark
+	public static final int ENERGY_RESTORE_BY_EATING	= 2;
 
 	// Display
 	public static final Color CELL_COLOR 			= Color.GRAY;

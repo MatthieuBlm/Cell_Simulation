@@ -1,11 +1,15 @@
 package engine;
 
+import java.util.List;
+import java.util.Random;
+
 import javax.swing.JPanel;
 
-import main.Settings;
-import universe.Universe;
 import behavior.CellBehavior;
 import cell.WatorCell;
+import main.Couple;
+import main.Settings;
+import universe.Universe;
 
 public class WatorEngine extends Engine {
 
@@ -20,6 +24,8 @@ public class WatorEngine extends Engine {
 			for (int j = 0; j < Settings.NB_CELL_HEIGH; j++) {
 				if(behavior.isSimulable(universe.getCell(i, j))){
 					tmpCell = (WatorCell) universe.getCell(i, j);
+					tmpCell.decrementEnergy();
+					
 					if(behavior.canDie(i, j)){
 						universe.removeCell(i, j);
 					}
@@ -28,11 +34,18 @@ public class WatorEngine extends Engine {
 							tmpCell = (WatorCell) behavior.move(i, j);
 						}
 						if(tmpCell.canReproduce()){
-							universe.addCell((tmpCell.isShark() ? new WatorCell("shark") : new WatorCell("fish")), i, j);
-							tmpCell.initialiseReproductionStep();
+							List<Couple<Integer, Integer>> freeCell = behavior.getFreeLocationAround(i, j);
+							if(freeCell.size() > 0){
+								Couple<Integer, Integer> dest = freeCell.get(new Random().nextInt(freeCell.size()));
+								if(tmpCell.isFish())
+									universe.addCell(new WatorCell("fish"), (Integer)dest.getV1(), (Integer)dest.getV2());
+								else if(tmpCell.isShark())
+									universe.addCell(new WatorCell("shark"), (Integer)dest.getV1(), (Integer)dest.getV2());
+								
+								tmpCell.initialiseReproductionStep();
+							}
 						}
 						tmpCell.incrementReproductionStep();
-						tmpCell.decrementEnergy();
 					}
 
 				}

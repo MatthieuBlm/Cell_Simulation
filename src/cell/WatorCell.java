@@ -46,7 +46,7 @@ public class WatorCell extends Cell {
 	}
 	
 	public WatorCell clone(){
-		return new WatorCell(this.type, Settings.SHARK_ENERGIE, this.reproductionStep);
+		return new WatorCell(this.type, this.energy, this.reproductionStep);
 	}
 	
 	public boolean isShark(){
