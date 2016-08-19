@@ -8,6 +8,7 @@ import cell.Cell;
 import cell.WatorCell;
 import main.CellAround;
 import main.Couple;
+import main.Settings;
 import universe.Universe;
 import universe.WatorUniverse;
 
@@ -66,7 +67,7 @@ public class WatorBehavior extends CellBehavior {
 				movedCell = cell.clone();
 				universe.addCell(movedCell, destination.getV1(), destination.getV2());
 				universe.removeCell(x, y);
-				cell.increaseEnergy(30);
+				movedCell.increaseEnergy(Settings.ENERGY_RESTORE_BY_EATING);
 			}else if(freeCellList.size() > 0){
 				Couple<Integer, Integer> destination = freeCellList.get(rand.nextInt(freeCellList.size()));
 				movedCell = cell.clone();

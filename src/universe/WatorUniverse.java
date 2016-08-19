@@ -9,6 +9,14 @@ import cell.WatorCell;
 
 public class WatorUniverse extends SimpleUniverse {
 	
+	public WatorUniverse() {
+		super();
+	}
+	
+	public WatorUniverse(int width, int heigh) {
+		super(width, heigh);
+	}
+
 	@Override
 	public void initUniverse() {
 		this.buildRandomlyUniverse();

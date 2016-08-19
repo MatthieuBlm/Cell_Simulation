@@ -18,7 +18,6 @@ public abstract class Engine {
 	}
 	
 	public void start(){
-		universe.initUniverse();
 		
 		new Thread(new Runnable() {
 			

@@ -11,8 +11,8 @@ public class WatorCell extends Cell {
 	
 	public WatorCell(String type){
 		super();
-		this.type = type;
-		switch(type){
+		this.type = type.toLowerCase();
+		switch(type.toLowerCase()){
 		case "shark":
 			this.setCellColor(Color.BLUE);
 			break;
@@ -31,11 +31,11 @@ public class WatorCell extends Cell {
 	 * @param reproductionStep The state of reproduction.
 	 */
 	private WatorCell(String type, int energy, int reproductionStep){
-		this.type = type;
+		this.type = type.toLowerCase();
 		this.energy = energy;
 		this.reproductionStep = reproductionStep;
 		
-		switch(type){
+		switch(type.toLowerCase()){
 		case "shark":
 			this.setCellColor(Color.BLUE);
 			break;
@@ -46,7 +46,7 @@ public class WatorCell extends Cell {
 	}
 	
 	public WatorCell clone(){
-		return new WatorCell(this.type, this.energy, this.reproductionStep);
+		return new WatorCell(this.type, Settings.SHARK_ENERGIE, this.reproductionStep);
 	}
 	
 	public boolean isShark(){

@@ -9,6 +9,10 @@ public abstract class SimpleUniverse extends Universe {
 		super();
 	}
 	
+	public SimpleUniverse(int width, int heigh) {
+		super(width, heigh);
+	}
+
 	@Override
 	public void addSimpleCell(int x, int y){
 		map[x][y] = new SimpleCell();
