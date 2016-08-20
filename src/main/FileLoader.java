@@ -1,14 +1,13 @@
 package main;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import cell.WatorCell;
 import universe.Universe;
 import universe.WatorUniverse;
-import cell.WatorCell;
 
 public class FileLoader {
 	private String filePath;
@@ -20,6 +19,26 @@ public class FileLoader {
 		this.simulationMode = simulationMode;
 	}
 	
+	/**
+	 * Allow user to load universe from a file.
+	 * The file must be like this :
+	 * The first line is the horizontal number of cell,
+	 * The second line is the vertical number of cell,
+	 * At the third line became the universe description,
+	 * To add a shark, write 'S',
+	 * To add a fish, write 'F',
+	 * Any other character for null.
+	 * The world description must finish with 'END' at the last line.
+	 * For Example :
+	 * 5
+	 * 4
+	 * 00SS0
+	 * 0SS0F
+	 * 000FF
+	 * 000FF
+	 * END
+	 * @return True if the file has been loaded, false otherwise
+	 */
 	public boolean loadFile(){
 		String line = "";
 		int x = 0;

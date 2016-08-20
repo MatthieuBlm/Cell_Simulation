@@ -43,8 +43,8 @@ public class Main {
 			engine = new LangtonAntEngine(universe, mainPanel, behavior);
 			break;
 		case "Wator":
-			if(args.length > 1 && args[1].equals("load")){
-				FileLoader fileLoader = new FileLoader("levels/wator_level", "Wator");
+			if(args.length > 2 && args[1].equals("load")){
+				FileLoader fileLoader = new FileLoader(args[2], "Wator");
 				if(fileLoader.loadFile())
 					universe = fileLoader.getUniverse();
 				else
