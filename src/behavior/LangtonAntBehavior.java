@@ -3,13 +3,12 @@ package behavior;
 import java.awt.Color;
 import java.util.List;
 
+import cell.Ant;
+import cell.Cell;
 import main.Couple;
 import main.Settings;
 import universe.LangtonAntUniverse;
 import universe.Universe;
-import cell.Ant;
-import cell.Cell;
-import exception.NotLivingCellException;
 
 public class LangtonAntBehavior extends CellBehavior {
 

@@ -1,16 +1,23 @@
 package universe;
 
 import java.awt.Graphics;
+import java.util.List;
 import java.util.Random;
 
-import main.Settings;
 import cell.Cell;
 import cell.WatorCell;
+import main.Settings;
 
 public class WatorUniverse extends SimpleUniverse {
+	private List<String> speciesList;
 	
 	public WatorUniverse() {
 		super();
+	}
+	
+	public WatorUniverse(List<String> speciesList){
+		super();
+		this.speciesList = speciesList;
 	}
 	
 	public WatorUniverse(int width, int heigh) {
@@ -32,7 +39,7 @@ public class WatorUniverse extends SimpleUniverse {
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[0].length; j++) {
 				if(rand.nextDouble() <= Settings.CELL_RATE){
-					map[i][j] = (rand.nextDouble() <= 0.5 ? new WatorCell((rand.nextDouble() <= Settings.CELL_BALANCE ? "shark" : "fish")) : null)  ;
+					map[i][j] =  new WatorCell(speciesList.get(rand.nextInt(speciesList.size())));
 				}
 			}
 		}

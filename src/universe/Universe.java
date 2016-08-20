@@ -10,7 +10,6 @@ public abstract class Universe {
 
 	public Universe(){
 		map = new Object[Settings.NB_CELL_WIDTH][Settings.NB_CELL_HEIGH];
-		this.initUniverse();
 	}
 	
 	public Universe(int width, int heigh){

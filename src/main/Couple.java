@@ -30,6 +30,7 @@ public class Couple<T1, T2> {
 		if(!(o instanceof Couple))
 			return false;
 		
+		@SuppressWarnings("rawtypes")
 		Couple c = (Couple) o;
 		
 		if(!c.getV1().equals(this.v1) || !c.getV2().equals(this.v2))

@@ -41,7 +41,8 @@ public class WatorEngine extends Engine {
 									universe.addCell(new WatorCell("fish"), (Integer)dest.getV1(), (Integer)dest.getV2());
 								else if(tmpCell.isShark())
 									universe.addCell(new WatorCell("shark"), (Integer)dest.getV1(), (Integer)dest.getV2());
-								
+								else if(tmpCell.isBigFish())
+									universe.addCell(new WatorCell("bigfish"), (Integer)dest.getV1(), (Integer)dest.getV2());
 								tmpCell.initialiseReproductionStep();
 							}
 						}

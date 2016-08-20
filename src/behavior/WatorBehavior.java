@@ -27,7 +27,7 @@ public class WatorBehavior extends CellBehavior {
 	public boolean canDie(int x, int y) {
 		WatorCell cell = (WatorCell) universe.getCell(x, y);
 	
-		if(cell.isShark())
+		if(cell.isShark() || cell.isBigFish())
 			return ( cell.getEnergy() <= 0 ? true : false );
 
 		return false;
@@ -42,8 +42,13 @@ public class WatorBehavior extends CellBehavior {
 		
 		if(cell.isFish()){
 			return getNumberOfFreeCellAround(x, y) > 0;
-		}else if(cell.isShark()){
+		}else if(cell.isBigFish()){
 			if(this.getFishLocationAround(x, y).size() > 0){
+				return true;
+			}else if(this.getNumberOfFreeCellAround(x, y) > 0)
+				return true;
+		}else if(cell.isShark()){
+			if(this.getBigFishLocationAround(x, y).size() > 0){
 				return true;
 			}else if(this.getNumberOfFreeCellAround(x, y) > 0)
 				return true;
@@ -60,6 +65,21 @@ public class WatorBehavior extends CellBehavior {
 		WatorCell movedCell = null;
 		
 		if(cell.isShark()){
+			List<Couple<Integer, Integer>> listOfBigFish = this.getBigFishLocationAround(x, y);
+			if(listOfBigFish.size() > 0){
+				Couple<Integer, Integer> destination = listOfBigFish.get(rand.nextInt(listOfBigFish.size()));
+				universe.removeCell(destination.getV1(), destination.getV2());
+				movedCell = cell.clone();
+				universe.addCell(movedCell, destination.getV1(), destination.getV2());
+				universe.removeCell(x, y);
+				movedCell.increaseEnergy(Settings.SHARK_ENERGY_RESTORE_BY_EATING);
+			}else if(freeCellList.size() > 0){
+				Couple<Integer, Integer> destination = freeCellList.get(rand.nextInt(freeCellList.size()));
+				movedCell = cell.clone();
+				universe.addCell(movedCell, destination.getV1(), destination.getV2());
+				universe.removeCell(x, y);
+			}
+		}else if(cell.isBigFish()){
 			List<Couple<Integer, Integer>> listOfFish = this.getFishLocationAround(x, y);
 			if(listOfFish.size() > 0){
 				Couple<Integer, Integer> destination = listOfFish.get(rand.nextInt(listOfFish.size()));
@@ -67,7 +87,7 @@ public class WatorBehavior extends CellBehavior {
 				movedCell = cell.clone();
 				universe.addCell(movedCell, destination.getV1(), destination.getV2());
 				universe.removeCell(x, y);
-				movedCell.increaseEnergy(Settings.ENERGY_RESTORE_BY_EATING);
+				movedCell.increaseEnergy(Settings.BIG_FISH_ENERGY_RESTORE_BY_EATING);
 			}else if(freeCellList.size() > 0){
 				Couple<Integer, Integer> destination = freeCellList.get(rand.nextInt(freeCellList.size()));
 				movedCell = cell.clone();
@@ -82,6 +102,20 @@ public class WatorBehavior extends CellBehavior {
 		}
 		
 		return movedCell;
+	}
+
+	private List<Couple<Integer, Integer>> getBigFishLocationAround(int x, int y) {
+		ArrayList<Couple<Integer, Integer>> list = new ArrayList<>();
+		CellAround cellAround = new CellAround(x, y);
+		WatorCell tmpCell;
+		for (Couple<Integer, Integer> couple : cellAround.getAllCellLocationAroundThis()) {
+			try{
+				tmpCell = (WatorCell) universe.getCell(couple.getV1(), couple.getV2());
+				if(tmpCell != null && ((WatorCell) tmpCell).isBigFish())
+					list.add(couple);
+			}catch(ArrayIndexOutOfBoundsException e){}
+		}
+		return list;
 	}
 
 	@Override
@@ -113,6 +147,7 @@ public class WatorBehavior extends CellBehavior {
 		return list;
 	}
 
+	@SuppressWarnings("unused")
 	private int getNumberOfSharkAround(int x, int y){
 		int nb = 0;
 		CellAround cellAround = new CellAround(x, y);

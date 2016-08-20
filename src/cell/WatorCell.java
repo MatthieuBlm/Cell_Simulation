@@ -15,12 +15,15 @@ public class WatorCell extends Cell {
 		switch(type.toLowerCase()){
 		case "shark":
 			this.setCellColor(Color.BLUE);
+			energy = Settings.SHARK_ENERGIE;
 			break;
+		case "bigfish":
+			this.setCellColor(Color.MAGENTA);
+			energy = Settings.BIG_FISH_ENERGIE;
 		case "fish":
 			this.setCellColor(Color.GREEN);
 			break;
 		}
-		energy = Settings.SHARK_ENERGIE;
 		reproductionStep = 0;
 	}
 	
@@ -39,6 +42,9 @@ public class WatorCell extends Cell {
 		case "shark":
 			this.setCellColor(Color.BLUE);
 			break;
+		case "bigfish":
+			this.setCellColor(Color.MAGENTA);
+			break;
 		case "fish":
 			this.setCellColor(Color.GREEN);
 			break;
@@ -55,6 +61,10 @@ public class WatorCell extends Cell {
 	
 	public boolean isFish(){
 		return this.type.equalsIgnoreCase("fish");
+	}
+
+	public boolean isBigFish() {
+		return this.type.equalsIgnoreCase("bigfish");
 	}
 
 	public int getEnergy() {
@@ -86,9 +96,11 @@ public class WatorCell extends Cell {
 			return this.reproductionStep >= Settings.FISH_REPRODUCTION_STEPS;
 		else if(this.isShark())
 			return this.reproductionStep >= Settings.SHARK_REPRODUCTION_STEPS;
-			
+		else if(this.isBigFish())
+			return this.reproductionStep >= Settings.BIG_FISH_REPRODUCTION_STEPS;
 		return false;
 	}
+
 
 	public void increaseEnergy(int i) {
 		this.energy += i;

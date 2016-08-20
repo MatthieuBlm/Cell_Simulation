@@ -19,11 +19,14 @@ public abstract class Settings {
 	public static final int LEFT					= 3;
 	
 	// 			Wator Simultation
-	public static final int FISH_REPRODUCTION_STEPS 	= 10;
+	public static final int FISH_REPRODUCTION_STEPS 	= 12;
 	public static final int SHARK_REPRODUCTION_STEPS 	= 10;
+	public static final int BIG_FISH_REPRODUCTION_STEPS = 8;
 	public static final int SHARK_ENERGIE				= 10;
-	public static final double CELL_BALANCE 			= 0.3;					// Balance between Sharks and Fish. 0 = Only fish, 1 = only shark
-	public static final int ENERGY_RESTORE_BY_EATING	= 2;
+	public static final int BIG_FISH_ENERGIE 			= 10;
+	public static final double CELL_BALANCE 			= 0.5;					// Balance between Sharks and Fish. 0 = Only fish, 1 = only shark
+	public static final int BIG_FISH_ENERGY_RESTORE_BY_EATING 	= 10;
+	public static final int SHARK_ENERGY_RESTORE_BY_EATING 		= 15;
 
 	// Display
 	public static final Color CELL_COLOR 			= Color.GRAY;

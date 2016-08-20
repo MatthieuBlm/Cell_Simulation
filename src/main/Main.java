@@ -1,11 +1,8 @@
 package main;
 
-import universe.LangtonAntUniverse;
-import universe.LifeGameUniverse;
-import universe.Universe;
-import universe.WatorUniverse;
-import view.MainPanel;
-import view.Window;
+import java.util.ArrayList;
+import java.util.List;
+
 import behavior.CellBehavior;
 import behavior.LangtonAntBehavior;
 import behavior.LifeGameBehavior;
@@ -14,6 +11,12 @@ import engine.Engine;
 import engine.LangtonAntEngine;
 import engine.LifeGameEngine;
 import engine.WatorEngine;
+import universe.LangtonAntUniverse;
+import universe.LifeGameUniverse;
+import universe.Universe;
+import universe.WatorUniverse;
+import view.MainPanel;
+import view.Window;
 
 public class Main {
 	private static Universe universe;
@@ -43,15 +46,23 @@ public class Main {
 			engine = new LangtonAntEngine(universe, mainPanel, behavior);
 			break;
 		case "Wator":
+			List<String> speciesList = new ArrayList<>();
+			speciesList.add("fish");
+			speciesList.add("shark");
+			speciesList.add("shark");
+			speciesList.add("shark");
+			speciesList.add("bigfish");
+			speciesList.add("bigfish");
+			speciesList.add("bigfish");
 			if(args.length > 2 && args[1].equals("load")){
 				FileLoader fileLoader = new FileLoader(args[2], "Wator");
 				if(fileLoader.loadFile())
 					universe = fileLoader.getUniverse();
 				else
-					universe = new WatorUniverse();
+					universe = new WatorUniverse(speciesList);
 			}else
-				universe = new WatorUniverse();
-			
+				universe = new WatorUniverse(speciesList);
+			universe.initUniverse();
 			behavior = new WatorBehavior(universe);
 			mainPanel = new MainPanel(universe);
 			window = new Window(mainPanel);
